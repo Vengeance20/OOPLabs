@@ -1,1 +1,23 @@
+2.2.5
+  Input two numbers and calculate using operations: +, -, *, / and consider the case when calculating quotient with denominator of 0
 
+2.2.6
+  Considering ax + b = 0:
+    Case 1: a != 0 => x = -b/a
+    Case 2: a = 0
+      +) b = 0 => Infinite solutions
+      +) b != 0 => No solutions
+
+6.3
+  Calling n = height of the triangle
+  Each line has 2*i + 1 stars starting from i = 0 at the top of the triangle to i = n (bottom of the triangle)
+
+6.4
+  Creating arrays to check for validity of month input 
+  After the input is valid, we check which month and year to output the number of days of that month
+
+6.5
+  Sort the array and using loop to calculate the sum and then the average
+
+6.6
+  Adding two matrices by using multi-dimensional array and loop
