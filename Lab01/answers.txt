@@ -8,6 +8,23 @@
       +) b = 0 => Infinite solutions
       +) b != 0 => No solutions
 
+  Considering system a_11 + a_12 = b1
+                     a_21 + a_22 = b2
+    Calculating the determiants:
+      D = a_11 * b2 - a_21 * b1
+      D1 = a_22 * b1 - a_12 * b2
+      D2 = a_11 * b_2 - a_21 * b1
+    Case 1: D != 0 => x1 = D/D1, x2 = D/D2
+    Case 2: D = 0 and D1 or D2 != 0 => No solutions
+    Case 3: D = D1 = D2 = 0 => Infinite solutions
+
+  Considering Ax^2 + Bx + C
+    Case 1: A = 0 => Similar to solving first-degree equation
+    Case 2: A != 0
+      Calculating delta
+        +) delta > 0 => x = (-b +- sqrt(delta))/2a
+        +) delta = 0 => x = -b/2a
+        +) delta < 0 => No solutions
 6.3
   Calling n = height of the triangle
   Each line has 2*i + 1 stars starting from i = 0 at the top of the triangle to i = n (bottom of the triangle)
