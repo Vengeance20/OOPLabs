@@ -1,1 +1,3 @@
-
+Reading Assignment:  When should accessor methods be used?
+Answers:
+- 
