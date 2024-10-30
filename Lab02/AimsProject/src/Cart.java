@@ -20,17 +20,22 @@ public class Cart {
 				ind = i;
 			}
 		}
+		for (int i = ind; i < qtyOrdered; i++) {
+			itemsOrdered[i] = itemsOrdered[i + 1];
+		}
 		qtyOrdered--;
-		itemsOrdered[ind] = null;
 		System.out.println("The disc has been removed");	
 	}
 	public float totalCost() {
-		for(int i = 0; i < MAX_NUMBERS_ORDERED; i++) {
+		for(int i = 0; i < qtyOrdered; i++) {
 			if (itemsOrdered[i] == null) {
 				continue;
 			}
 			total += itemsOrdered[i].getCost();
 		}
+		return total;
+	}
+}
 		return total;
 	}
 }
