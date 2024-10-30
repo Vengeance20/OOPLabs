@@ -36,6 +36,3 @@ public class Cart {
 		return total;
 	}
 }
-		return total;
-	}
-}
