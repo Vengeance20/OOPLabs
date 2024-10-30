@@ -28,9 +28,6 @@ public class Cart {
 	}
 	public float totalCost() {
 		for(int i = 0; i < qtyOrdered; i++) {
-			if (itemsOrdered[i] == null) {
-				continue;
-			}
 			total += itemsOrdered[i].getCost();
 		}
 		return total;
