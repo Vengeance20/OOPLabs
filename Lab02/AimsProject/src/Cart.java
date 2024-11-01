@@ -20,9 +20,10 @@ public class Cart {
 				ind = i;
 			}
 		}
-		for (int i = ind; i < qtyOrdered; i++) {
+		for (int i = ind; i < qtyOrdered - 1; i++) {
 			itemsOrdered[i] = itemsOrdered[i + 1];
 		}
+		itemsOrdered[qtyOrdered] = null;
 		qtyOrdered--;
 		System.out.println("The disc has been removed");	
 	}
