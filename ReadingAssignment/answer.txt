@@ -1,0 +1,8 @@
+Question: After the call of swap(jungleDVD, cinderellaDVD) why does the title of these two objects still remain?
+Answer: When the swap function is called, this function creates mirror references of two objects jungleDVD and cinderellaDVD (o1 and o2). Therefore, the changes to o1 and o2 do not affect the original ones. 
+This means that the title of two objects still remain after calling swap function.
+
+Question: After the call of changeTitle(jungleDVD, cinderellaDVD.getTitle()) why is the title of the JungleDVD changed?
+Answer:  
+When the function is called, a new reference dvd is created and point to jungleDVD. The change of the title in reference dvd with the method setTitle leads to the change of the object jungleDVD. 
+After that, we assigned the new object to dvd. However, jungleDVD is not affected since dvd is now pointing to the newly created object.
