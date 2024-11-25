@@ -24,7 +24,7 @@ public class Store {
 	}
 	
 	public void print() {
-		System.out.println("***********************CART***********************");
+		System.out.println("***********************STORE***********************");
 		System.out.println("Store:");
 		for (int i = 0; i < storeQty; i++) {
 			System.out.println((i + 1) + ". DVD - " + itemsInStore[i].toString());
