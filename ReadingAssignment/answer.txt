@@ -1,8 +1,27 @@
-Question: After the call of swap(jungleDVD, cinderellaDVD) why does the title of these two objects still remain?
-Answer: When the swap function is called, this function creates mirror references of two objects jungleDVD and cinderellaDVD (o1 and o2). Therefore, the changes to o1 and o2 do not affect the original ones. 
-This means that the title of two objects still remain after calling swap function.
+-Question: Alternatively, to compare items in the cart, instead of using Comparator, we can use the Comparable interface and override the compareTo()method. You can refer to the Java docs to see the information of this interface.
 
-Question: After the call of changeTitle(jungleDVD, cinderellaDVD.getTitle()) why is the title of the JungleDVD changed?
-Answer:  
-When the function is called, a new reference dvd is created and point to jungleDVD. The change of the title in reference dvd with the method setTitle leads to the change of the object jungleDVD. 
-After that, we assigned the new object to dvd. However, jungleDVD is not affected since dvd is now pointing to the newly created object.
+Suppose we are taking this Comparable interface approach.
+
+- What class should implement the Comparable interface?
+
+Answers: The Media class should implement the Comparable interface
+
+- In those classes, how should you implement the compareTo()method to reflect the ordering that we want?
+
+Answers: 
+
+    public int compareTo(Media m) {
+        int titleComparison = this.title.compareTo(m.title);
+        if (titleComparison != 0) {
+            return titleComparison;
+        }
+        return Double.compare(m.cost, this.cost);
+    }
+
+- Can we have two ordering rules of the item (by title then cost and by cost then title) if we use this Comparable interface approach?
+
+Answers: We cannot because the Comparable interface allows only one natural ordering for a class.
+
+- Suppose the DVDs has a different ordering rule from the other media types, that is by title, then decreasing length, then cost. How would you modify your code to allow this?
+
+Answers: We can write method compareTo() in class DigitalVideoDisc to make it overridden
