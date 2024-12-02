@@ -1,33 +1,38 @@
 package hust.soict.cybersecurity.aims.store;
-import hust.soict.cybersecurity.aims.disc.*;
+import java.util.ArrayList;
+import hust.soict.cybersecurity.aims.media.*;
 
 public class Store {
-	private DigitalVideoDisc itemsInStore[] = new DigitalVideoDisc[10000000];
-	private int storeQty = 0;
-	public void addDVD(DigitalVideoDisc disc) {
-		itemsInStore[storeQty] = disc;
-		storeQty++;
+	private ArrayList<Media> itemsInStore = new ArrayList<Media>();
+	
+	public void addMedia(Media media) {
+		itemsInStore.add(media);
 	}
 	
-	public void removeDVD(DigitalVideoDisc disc) {
-		int ind = 0;
-		for (int i = 0; i < storeQty; i++) {
-			if(disc.equals(itemsInStore[i])) {
-				ind = i;
+	public void removeMedia(Media media) {
+		itemsInStore.remove(media);
+	}
+	
+	public Media searchByTitle(String title) {
+		boolean found = false;
+		for (int i = 0; i < itemsInStore.size(); i++) {
+			if (itemsInStore.get(i).getTitle().equals(title)) {
+				System.out.println("Media found: " + itemsInStore.get(i).toString());
+				found = true;
+				return itemsInStore.get(i);
 			}
 		}
-		for (int i = ind; i < storeQty - 1; i++) {
-			itemsInStore[i] = itemsInStore[i + 1];
+		if (!found) {
+			System.out.println("There are no medias that match your search");
 		}
-		itemsInStore[storeQty] = null;
-		storeQty--;
+		return null;
 	}
 	
 	public void print() {
 		System.out.println("***********************STORE***********************");
 		System.out.println("Store:");
-		for (int i = 0; i < storeQty; i++) {
-			System.out.println((i + 1) + ". DVD - " + itemsInStore[i].toString());
+		for (int i = 0; i < itemsInStore.size(); i++) {
+			System.out.println((i + 1) + ". DVD - " + itemsInStore.get(i).toString());
 		}
 		System.out.println("***************************************************");
 	}
