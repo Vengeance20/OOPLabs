@@ -1,7 +1,10 @@
 package hust.soict.cybersecurity.aims;
 import java.util.Scanner;
 
+import javax.naming.LimitExceededException;
+
 import hust.soict.cybersecurity.aims.cart.Cart;
+import hust.soict.cybersecurity.aims.exception.PlayerException;
 import hust.soict.cybersecurity.aims.media.Book;
 import hust.soict.cybersecurity.aims.media.CompactDisc;
 import hust.soict.cybersecurity.aims.media.DigitalVideoDisc;
@@ -15,7 +18,7 @@ public class Aims {
 	public static Cart cart = new Cart();
 	public static Store store = new Store();
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws LimitExceededException {
 		Scanner s = new Scanner(System.in);
 		int choice;
 		do {
@@ -90,7 +93,7 @@ public class Aims {
 		System.out.println("Please choose a number: 0-1-2-3-4-5");
 	}
 	
-	public static void viewStore(Scanner s) {
+	public static void viewStore(Scanner s) throws LimitExceededException {
 		System.out.println("Store Items:");
 		store.print();
 
@@ -121,7 +124,7 @@ public class Aims {
 		} while (choice != 0);
 	}
 	
-	public static void seeMediaDetails(Scanner s) {
+	public static void seeMediaDetails(Scanner s) throws LimitExceededException {
 		System.out.print("Enter the title: ");
 		String title = s.nextLine();
 		Media media = store.searchByTitle(title);
@@ -134,7 +137,7 @@ public class Aims {
 		}
 	}
 	
-	public static void mediaDetailsMenu(Scanner s, Media media) {
+	public static void mediaDetailsMenu(Scanner s, Media media) throws LimitExceededException {
 		int choice;
 		do {
 			System.out.println("");
@@ -156,7 +159,24 @@ public class Aims {
 					break;
 				case 2:
 					if (media instanceof Playable) {
-						((Playable) media).play();
+                        if(media instanceof DigitalVideoDisc){
+                            try {
+								((DigitalVideoDisc) media).play();
+							} catch (PlayerException e) {
+								e.getMessage();
+								e.toString();
+								e.printStackTrace();
+							}
+                        }
+                        else if(media instanceof CompactDisc){
+                            try {
+								((CompactDisc)media).play();
+							} catch (PlayerException e) {
+								e.getMessage();
+								e.toString();
+								e.printStackTrace();
+							}
+                        }
 					} else {
 						System.out.println("This media cannot be played.");
 					}
@@ -169,7 +189,7 @@ public class Aims {
 		} while (choice != 0);
 	}
 	
-	public static void addMediaToCart(Scanner s) {
+	public static void addMediaToCart(Scanner s) throws LimitExceededException {
 		System.out.print("Enter the title: ");
 		String title = s.nextLine();
 		Media media = store.searchByTitle(title);

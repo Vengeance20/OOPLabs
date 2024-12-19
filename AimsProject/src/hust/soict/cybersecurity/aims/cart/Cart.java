@@ -1,21 +1,38 @@
 package hust.soict.cybersecurity.aims.cart;
-import java.util.ArrayList;
 import java.util.Collections;
 
+import javax.naming.LimitExceededException;
+
 import hust.soict.cybersecurity.aims.media.Media;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 public class Cart {
 	
 	public static final int MAX_NUMBERS_ORDERED = 20;
-	private ArrayList<Media> itemsOrdered = new ArrayList<Media>();
+	private ObservableList<Media> itemsOrdered = FXCollections.observableArrayList();
 	private float total = 0;
 	
-	public void addMedia(Media media) {
-		itemsOrdered.add(media);
+	public void addMedia(Media media) throws LimitExceededException {
+		if ((itemsOrdered.size()) >= MAX_NUMBERS_ORDERED) {
+			throw new LimitExceededException("The cart is full");
+		}
+		else if (itemsOrdered.contains(media)) {
+			System.out.println("This is already in your order!");
+		}
+		else {
+			itemsOrdered.add(media);
+			System.out.println("Media added!");
+			}
 	}
 	
 	public void removeMedia(Media media) {
-		itemsOrdered.remove(media);
+		if (itemsOrdered.contains(media)) {
+			itemsOrdered.remove(media);
+			System.out.println("Media removed from cart!");
+		} else {
+			System.out.println("Media is not in the order!");
+		}
 	}
 	
 	public float totalCost() {
@@ -92,8 +109,11 @@ public class Cart {
 		System.out.println("Sorting by Title - Cost:");
 		itemsOrdered.forEach(System.out::println);
 	}
-	
+
+	public ObservableList<Media> getItemsOrdered() {
+		return itemsOrdered;
+	}
 	public void clear() {
-		this.itemsOrdered = new ArrayList<Media>();
+		this.itemsOrdered = FXCollections.observableArrayList();
 	}
 }
