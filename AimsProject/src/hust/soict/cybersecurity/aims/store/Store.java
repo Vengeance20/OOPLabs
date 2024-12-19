@@ -1,10 +1,14 @@
 package hust.soict.cybersecurity.aims.store;
 import java.util.ArrayList;
-import hust.soict.cybersecurity.aims.media.*;
+
+import hust.soict.cybersecurity.aims.media.Media;
 
 public class Store {
-	private ArrayList<Media> itemsInStore = new ArrayList<Media>();
+	private ArrayList<Media> itemsInStore;
 	
+	public Store() {
+		this.itemsInStore = new ArrayList<Media>();
+	}
 	public void addMedia(Media media) {
 		itemsInStore.add(media);
 	}
@@ -35,5 +39,9 @@ public class Store {
 			System.out.println((i + 1) + ". DVD - " + itemsInStore.get(i).toString());
 		}
 		System.out.println("***************************************************");
+	}
+	
+	public ArrayList<Media> getItemsInStore() {
+		return itemsInStore;
 	}
 }

@@ -1,5 +1,7 @@
 package hust.soict.cybersecurity.test.compare;
 
+import javax.naming.LimitExceededException;
+
 import hust.soict.cybersecurity.aims.cart.Cart;
 import hust.soict.cybersecurity.aims.media.Book;
 import hust.soict.cybersecurity.aims.media.CompactDisc;
@@ -7,7 +9,7 @@ import hust.soict.cybersecurity.aims.media.DigitalVideoDisc;
 import hust.soict.cybersecurity.aims.media.Track;
 
 public class CompareTest {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws LimitExceededException {
 		Cart cart = new Cart();
 		
 		CompactDisc cd = new CompactDisc("Pink Panther", "Cartoon", "Animator", 10.8f);
